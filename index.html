@@ -194,9 +194,9 @@ footer ul{list-style:none;display:grid;gap:9px;font-size:14px;font-weight:600}
       <h1>Smuggle past<br>the tax.</h1>
       <div class="say">Customs checks every bag.</div>
       <div class="label">Some get through. Some get caught.</div>
-      <p class="fine">Built on <b>@bordrlessdex</b>. A customs hook runs inside every move of $SMGL and decides, after you buy, whether your bag made it.</p>
+      <p class="fine">Built on <b>@bordrlessdex</b>. A customs hook runs inside every move of the token. Flip fast and you'll likely get caught. Hold, and customs waves you through.</p>
       <div class="ctas">
-        <a class="btn dark" data-link="buy" href="#" target="_blank" rel="noopener">Buy $SMGL <span class="arrow">→</span></a>
+        <a class="btn dark" data-link="x" href="#" target="_blank" rel="noopener">Follow the build <span class="arrow">→</span></a>
         <a class="btn" href="#customs">How customs works <span class="arrow">→</span></a>
         <a class="btn spot" href="#hook"><span class="arrow">&lt;/&gt;</span> Read the hook <span class="arrow">→</span></a>
       </div>
@@ -217,7 +217,7 @@ footer ul{list-style:none;display:grid;gap:9px;font-size:14px;font-weight:600}
 
   <section class="stats">
     <div class="card">
-      <header>On Smuggler now <span class="live"><i></i>Pre-launch</span></header>
+      <header>On Smuggler now <span class="live"><i></i>In build</span></header>
       <div class="nums">
         <div><small>Smugglers</small><strong>—</strong></div>
         <div><small>Bags caught</small><strong>—</strong></div>
@@ -227,9 +227,9 @@ footer ul{list-style:none;display:grid;gap:9px;font-size:14px;font-weight:600}
     <div class="card">
       <header>Customs rules</header>
       <div class="nums">
-        <div><small>Catch rate</small><strong>20%</strong></div>
+        <div><small>Caught, first hour</small><strong>1 in 2</strong></div>
+        <div><small>Caught, after 24h</small><strong>Never</strong></div>
         <div><small>Duty if caught</small><strong>25%</strong></div>
-        <div><small>Duty if clean</small><strong>0%</strong></div>
       </div>
     </div>
   </section>
@@ -284,7 +284,7 @@ footer ul{list-style:none;display:grid;gap:9px;font-size:14px;font-weight:600}
         <div>
           <div class="colhead"><span class="ab">A</span><h3>Random in the same trade</h3><span class="pill">Bots win</span></div>
           <div class="code"><span class="c">// outcome known inside the transaction</span>
-<span class="k">let</span> caught = rand(slot) &lt; 20%;
+<span class="k">let</span> caught = rand(slot) &lt; odds;
 <span class="c">// bot simulates, sees "caught", reverts.</span>
 <span class="c">// only humans ever pay.</span></div>
           <table style="margin-top:16px">
@@ -297,7 +297,7 @@ footer ul{list-style:none;display:grid;gap:9px;font-size:14px;font-weight:600}
           <div class="code"><span class="c">// buy: seal the crate, decide nothing</span>
 holding.data = { sealed_slot: now };
 <span class="c">// later move: open it with a hash nobody had</span>
-<span class="k">let</span> caught = hash(slot_after(sealed_slot)) &lt; 20%;</div>
+<span class="k">let</span> caught = hash(slot_after(sealed_slot)) &lt; odds(held);</div>
           <table style="margin-top:16px">
             <tr><td>The odds</td><td>Fixed by a slot that didn't exist when you bought.</td></tr>
             <tr><td>Who pays</td><td>Any bag customs catches. Bots included.</td></tr>
@@ -337,9 +337,9 @@ holding.data = { sealed_slot: now };
       <div>
         <h5>The rules</h5>
         <ul class="kv">
-          <li><span>Catch rate</span><span>20%</span></li>
+          <li><span>Caught, first hour</span><span>1 in 2</span></li>
           <li><span>Duty if caught</span><span>25%</span></li>
-          <li><span>Duty if clean</span><span>0%</span></li>
+          <li><span>Caught, after 24h</span><span>never</span></li>
           <li><span>Duty goes to</span><span>holders · burn</span></li>
           <li><span>Chain</span><span>Solana</span></li>
         </ul>
